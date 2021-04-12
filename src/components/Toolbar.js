@@ -1,8 +1,8 @@
-import { styled, global } from '@stitches/react';
+import { styled } from '@stitches/react';
 
 const StyledToolbar = styled('div', {
   gridArea: 'toolbar',
-  backgroundColor: 'red'
+  borderBottom: '1px solid gainsboro'
 });
 
 const Toolbar = () => {

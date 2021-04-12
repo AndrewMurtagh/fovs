@@ -1,8 +1,8 @@
-import { styled, global } from '@stitches/react';
+import { styled } from '@stitches/react';
 
 const StyledSidebar = styled('div', {
   gridArea: 'sidebar',
-  backgroundColor: 'green'
+  borderRight: '1px solid gainsboro'
 });
 
 const Sidebar = () => {
