@@ -29,5 +29,4 @@ export default {
     Arrow: styled(DropdownMenu.Arrow, {
         fill: 'white',
     })
-
 }
