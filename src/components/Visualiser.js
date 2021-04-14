@@ -4,13 +4,11 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Box, PerspectiveCamera } from '@react-three/drei'
 import Axes from './Axes';
 import CameraVisualiser from './CameraVisualiser';
+import consts from '../core/consts';
 
 const StyledVisualiser = styled('div', {
     gridArea: 'visualiser'
 });
-
-const GRID_SIZE = 10;
-const GRID_DIVISIONS = 10;
 
 const Visualiser = () => {
     const viewer_camera = useRef();
@@ -22,7 +20,7 @@ const Visualiser = () => {
                     <PerspectiveCamera makeDefault ref={viewer_camera} position={[5, 5, 5]} />
                     <OrbitControls camera={viewer_camera.current} />
                     <ambientLight intensity={0.5} />
-                    <gridHelper args={[GRID_SIZE, GRID_DIVISIONS]} />
+                    <gridHelper args={[consts.GRID_SIZE, consts.GRID_DIVISIONS]} />
                     <Axes />
                     <Box />
 

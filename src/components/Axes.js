@@ -1,37 +1,34 @@
-import { Line, Html } from '@react-three/drei'
+import { Line, Html } from '@react-three/drei';
+import consts from '../core/consts';
 
 const Axes = () => {
-
-    const length = 5;
-    const LINE_WIDTH = 2;
-    const AXES_LABEL_COLOUR = '#414141';
-    const AXES_LABEL_OFFSET = length * 0.1;
 
     return (
         <>
             <Line
-                points={[[0, 0, 0], [length, 0, 0]]}
+                points={[[0, 0, 0], [consts.AXIS_LENGTH, 0, 0]]}
                 color="red"
-                lineWidth={LINE_WIDTH}
+                lineWidth={consts.AXIS_LINE_WIDTH}
             />
-            <Html center={true} position={[length + AXES_LABEL_OFFSET, 0, 0]}><p style={{ color: AXES_LABEL_COLOUR }}>x</p></Html>
+            <Html center={true} position={[consts.AXIS_LENGTH + consts.AXES_LABEL_OFFSET, 0, 0]}><p style={{ color: consts.AXES_LABEL_COLOUR }}>x</p></Html>
 
 
             <Line
-                points={[[0, 0, 0], [0, length, 0]]}
+                points={[[0, 0, 0], [0, consts.AXIS_LENGTH, 0]]}
                 color="green"
-                lineWidth={LINE_WIDTH}
+                lineWidth={consts.AXIS_LINE_WIDTH}
             />
-            <Html center={true} position={[0, length + AXES_LABEL_OFFSET, 0]}><p style={{ color: AXES_LABEL_COLOUR }}>y</p></Html>
+            <Html center={true} position={[0, consts.AXIS_LENGTH + consts.AXES_LABEL_OFFSET, 0]}><p style={{ color: consts.AXES_LABEL_COLOUR }}>y</p></Html>
 
             <Line
-                points={[[0, 0, 0], [0, 0, length]]}
+                points={[[0, 0, 0], [0, 0, consts.AXIS_LENGTH]]}
                 color="blue"
-                lineWidth={LINE_WIDTH}
+                lineWidth={consts.AXIS_LINE_WIDTH}
             />
-            <Html center={true} position={[0, 0, length + AXES_LABEL_OFFSET]}><p style={{ color: AXES_LABEL_COLOUR }}>z</p></Html>
+            <Html center={true} position={[0, 0, consts.AXIS_LENGTH + consts.AXES_LABEL_OFFSET]}><p style={{ color: consts.AXES_LABEL_COLOUR }}>z</p></Html>
         </>
     );
+    
 }
 
 export default Axes;

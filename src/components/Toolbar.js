@@ -5,7 +5,6 @@ import StyledDropdown from '../styles/dropdown';
 import StyleToggle from '../styles/toggle';
 import { CAMERA_PRESETS } from '../core/consts';
 
-console.log(CAMERA_PRESETS)
 
 const StyledToolbar = styled('div', {
     gridArea: 'toolbar',
@@ -22,7 +21,6 @@ const StyledToolbarSecion = styled('div', {
 });
 
 
-
 const Toolbar = () => {
 
     return (
@@ -31,7 +29,7 @@ const Toolbar = () => {
 
 
                 <StyledToolbarSecion>
-                    <img src="/camera.png" height="100%" />
+                    <img alt="Camera icon" src="/camera.png" height="100%" />
                 </StyledToolbarSecion>
 
 

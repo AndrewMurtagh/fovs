@@ -1,7 +1,7 @@
 import { styled } from '@stitches/react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
-export default {
+const dropdown_styles = {
     Separator: styled(DropdownMenu.Separator, {
         height: 1,
         backgroundColor: 'gainsboro',
@@ -30,3 +30,5 @@ export default {
         fill: 'white',
     })
 }
+
+export default dropdown_styles;

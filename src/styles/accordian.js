@@ -1,7 +1,7 @@
 import { styled } from '@stitches/react';
 import * as Accordion from '@radix-ui/react-accordion';
 
-export default {
+const accordian_styles = {
     Item: styled(Accordion.Item, {
         borderBottom: '1px solid gainsboro',
     }),
@@ -20,3 +20,5 @@ export default {
         padding: 10,
     })
 }
+
+export default accordian_styles;

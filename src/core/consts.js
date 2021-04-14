@@ -1,3 +1,19 @@
+
+const AXIS_LENGTH = 5;
+
+const consts = {
+    AXIS_LENGTH,
+    AXIS_LINE_WIDTH: 2,
+    AXES_LABEL_COLOUR: '#414141',
+    AXES_LABEL_OFFSET: AXIS_LENGTH * 0.1,
+
+    GRID_SIZE: 10,
+    GRID_DIVISIONS: 10,
+}
+
+export default consts;
+
+
 /**
  * Could also consider:
  * Luxonis DepthAI Cam
@@ -10,7 +26,7 @@
 /**
  * 'hfov' and 'vfov' are specified in degrees.
  * 'near' and 'far' are -1 for cameras but specified for depth cameras.
- */ 
+ */
 export const CAMERA_PRESETS = {
     custom: {
         key: 'custom',

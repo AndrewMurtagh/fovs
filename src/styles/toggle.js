@@ -1,7 +1,7 @@
 import { styled } from '@stitches/react';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 
-export default {
+const toggle_styles = {
     Item: styled(ToggleGroup.Item, {
         appearance: 'none',
         backgroundColor: 'transparent',
@@ -19,3 +19,5 @@ export default {
         },
     })
 }
+
+export default toggle_styles;
