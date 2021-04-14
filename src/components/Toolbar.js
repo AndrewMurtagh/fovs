@@ -3,6 +3,9 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import StyledDropdown from '../styles/dropdown';
 import StyleToggle from '../styles/toggle';
+import { CAMERA_PRESETS } from '../core/consts';
+
+console.log(CAMERA_PRESETS)
 
 const StyledToolbar = styled('div', {
     gridArea: 'toolbar',
@@ -36,17 +39,9 @@ const Toolbar = () => {
                     <DropdownMenu.Root>
                         <DropdownMenu.Trigger>Add Camera</DropdownMenu.Trigger>
                         <StyledDropdown.Content>
-                            <StyledDropdown.Item>Custom</StyledDropdown.Item>
-                            <StyledDropdown.Separator />
-                            <StyledDropdown.Item>Intel RealSense D415</StyledDropdown.Item>
-                            <StyledDropdown.Item>Intel RealSense D435</StyledDropdown.Item>
-                            <StyledDropdown.Item>Raspberry PiCam</StyledDropdown.Item>
-                            <StyledDropdown.Item>Luxonis DepthAI Cam</StyledDropdown.Item>
-                            <StyledDropdown.Item>ArduCam</StyledDropdown.Item>
-                            <StyledDropdown.Item>BlackBird 2 3D FPV</StyledDropdown.Item>
-                            <StyledDropdown.Item>Pixy 2 CMUcam5</StyledDropdown.Item>
-                            <StyledDropdown.Item>JeVois-A33 Smart Camera</StyledDropdown.Item>
-                            <StyledDropdown.Item>Terabee 3D Camera</StyledDropdown.Item>
+                            {
+                                Object.values(CAMERA_PRESETS).map(camera => <StyledDropdown.Item key={camera.key}>{camera.name}</StyledDropdown.Item>)
+                            }
                             <StyledDropdown.Arrow />
                         </StyledDropdown.Content>
                     </DropdownMenu.Root>
