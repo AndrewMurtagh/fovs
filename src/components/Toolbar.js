@@ -3,7 +3,8 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import { useDispatch, useSelector } from 'react-redux';
 import StyledDropdown from '../styles/dropdown';
-import StyleToggle from '../styles/toggle';
+import StyledToggle from '../styles/toggle';
+import StyledSwitch from '../styles/switch';
 import { PresetCameras, PresetViews } from '../core/consts';
 import indexSlice from '../app/slices';
 
@@ -23,15 +24,23 @@ const StyledToolbarSecion = styled('div', {
 
 
 
+
 const Toolbar = () => {
 
     const dispatch = useDispatch();
     const preset_view_key = useSelector(state => state.preset_view_key);
     const cameras = useSelector(state => state.cameras);
+    const show_axes = useSelector(state => state.show_axes);
+    const show_grid = useSelector(state => state.show_grid);
 
     // camera view has changed and the view is defined, 
     // view can be not defined if you unselect it
     const onViewChange = view => view && dispatch(indexSlice.actions.setView(view));
+
+    const onShowAxesChange = e => dispatch(indexSlice.actions.setShowAxes(e.target.checked));
+
+    const onShowGridChange = e => dispatch(indexSlice.actions.setShowGrid(e.target.checked));
+
 
     // a camera has been added to the scene
     const onCameraAdded = preset_camera => {
@@ -39,8 +48,8 @@ const Toolbar = () => {
         const num_cameras = cameras.length;
 
         const camera = {
-            id: num_cameras+1,
-            name: `Camera ${num_cameras+1}`,
+            id: num_cameras + 1,
+            name: `Camera ${num_cameras + 1}`,
             x: 0,
             y: 1,
             z: 0,
@@ -56,7 +65,7 @@ const Toolbar = () => {
         dispatch(indexSlice.actions.addCamera(camera));
 
     }
-   
+
 
     return (
         <>
@@ -83,33 +92,43 @@ const Toolbar = () => {
 
                 <StyledToolbarSecion>
                     <ToggleGroup.Root type="single" value={preset_view_key} onValueChange={onViewChange}>
-                        <StyleToggle.Item value={PresetViews.Iso.key}>Isometric</StyleToggle.Item>
-                        <StyleToggle.Item value={PresetViews.Left.key}>Left</StyleToggle.Item>
-                        <StyleToggle.Item value={PresetViews.Right.key}>Right</StyleToggle.Item>
-                        <StyleToggle.Item value={PresetViews.Front.key}>Front</StyleToggle.Item>
-                        <StyleToggle.Item value={PresetViews.Back.key}>Back</StyleToggle.Item>
-                        <StyleToggle.Item value={PresetViews.Top.key}>Top</StyleToggle.Item>
-                        <StyleToggle.Item value={PresetViews.Bottom.key}>Bottom</StyleToggle.Item>
+                        <StyledToggle.Item value={PresetViews.Iso.key}>Isometric</StyledToggle.Item>
+                        <StyledToggle.Item value={PresetViews.Left.key}>Left</StyledToggle.Item>
+                        <StyledToggle.Item value={PresetViews.Right.key}>Right</StyledToggle.Item>
+                        <StyledToggle.Item value={PresetViews.Front.key}>Front</StyledToggle.Item>
+                        <StyledToggle.Item value={PresetViews.Back.key}>Back</StyledToggle.Item>
+                        <StyledToggle.Item value={PresetViews.Top.key}>Top</StyledToggle.Item>
+                        <StyledToggle.Item value={PresetViews.Bottom.key}>Bottom</StyledToggle.Item>
                     </ToggleGroup.Root>
                 </StyledToolbarSecion>
 
                 <StyledToolbarSecion>
                     <ToggleGroup.Root type="single">
-                        <StyleToggle.Item value="none">None</StyleToggle.Item>
-                        <StyleToggle.Item value="apartment">Apartment</StyleToggle.Item>
-                        <StyleToggle.Item value="right">Factory</StyleToggle.Item>
+                        <StyledToggle.Item value="none">None</StyledToggle.Item>
+                        <StyledToggle.Item value="apartment">Apartment</StyledToggle.Item>
+                        <StyledToggle.Item value="right">Factory</StyledToggle.Item>
                     </ToggleGroup.Root>
                 </StyledToolbarSecion>
 
                 <StyledToolbarSecion>
                     <ToggleGroup.Root type="single">
-                        <StyleToggle.Item value="none">Rad</StyleToggle.Item>
-                        <StyleToggle.Item value="apartment">Deg</StyleToggle.Item>
+                        <StyledToggle.Item value="none">Rad</StyledToggle.Item>
+                        <StyledToggle.Item value="apartment">Deg</StyledToggle.Item>
                     </ToggleGroup.Root>
                     <ToggleGroup.Root type="single">
-                        <StyleToggle.Item value="none">Euler</StyleToggle.Item>
-                        <StyleToggle.Item value="apartment">Quaternion</StyleToggle.Item>
+                        <StyledToggle.Item value="none">Euler</StyledToggle.Item>
+                        <StyledToggle.Item value="apartment">Quaternion</StyledToggle.Item>
                     </ToggleGroup.Root>
+                    
+                    <label>axes</label>
+                    <StyledSwitch.Switch checked={show_axes} onCheckedChange={onShowAxesChange}>
+                        <StyledSwitch.Thumb />
+                    </StyledSwitch.Switch>
+
+                    <label>grid</label>
+                    <StyledSwitch.Switch checked={show_grid} onCheckedChange={onShowGridChange}>
+                        <StyledSwitch.Thumb />
+                    </StyledSwitch.Switch>
 
                     <button>Info</button>
                 </StyledToolbarSecion>

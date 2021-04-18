@@ -1,7 +1,7 @@
 import { styled } from '@stitches/react';
 import { useRef, useCallback } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Box, PerspectiveCamera } from '@react-three/drei';
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { useDispatch, useSelector } from 'react-redux';
 import Axes from './Axes';
 import CameraVisualiser from './CameraVisualiser';
@@ -19,6 +19,9 @@ const Visualiser = () => {
 
     const preset_view_key = useSelector(state => state.preset_view_key);
     const cameras = useSelector(state => state.cameras);
+    const show_axes = useSelector(state => state.show_axes);
+    const show_grid = useSelector(state => state.show_grid);
+    
 
     // the viewer's camera position
     let viewer_pos;
@@ -44,12 +47,13 @@ const Visualiser = () => {
                     <PerspectiveCamera makeDefault ref={viewer_camera} position={viewer_pos} />
                     <OrbitControls ref={orbit_controls_ref} camera={viewer_camera.current} />
                     <ambientLight intensity={0.5} />
-                    <gridHelper args={[consts.GRID_SIZE, consts.GRID_DIVISIONS]} />
-                    <Axes />
-                    <Box />
-                    {
-                        cameras.map(camera => <CameraVisualiser key={camera.id} camera={camera} />)
-                    }
+
+                    { show_grid && <gridHelper args={[consts.GRID_SIZE, consts.GRID_DIVISIONS]} /> }
+
+                    { show_axes && <Axes /> }
+
+                    { cameras.map(camera => <CameraVisualiser key={camera.id} camera={camera} />) }
+                    
                 </Canvas>
 
             </StyledVisualiser>

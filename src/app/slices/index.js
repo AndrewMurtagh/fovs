@@ -5,6 +5,8 @@ const initial_state = {
   preset_view_key: PresetViews.Iso.key,
   cameras: [],
   environment: '',
+  show_axes: true,
+  show_grid: true,
   rad_deg: '',
   euler_quat: ''
 };
@@ -13,12 +15,8 @@ export const indexSlice = createSlice({
   name: 'index',
   initialState: initial_state,
   reducers: {
-    setView: (state, action) => {
-      state.preset_view_key = action.payload;
-    },
-    addCamera: (state,action) => {
-      state.cameras.push(action.payload);
-    },
+    setView: (state, action) => state.preset_view_key = action.payload,
+    addCamera: (state,action) => state.cameras.push(action.payload),
     removeCamera: () => {
 
     },
@@ -28,6 +26,8 @@ export const indexSlice = createSlice({
     setEnvironment: () => {
 
     },
+    setShowAxes: (state, action) => state.show_axes = action.payload,
+    setShowGrid: (state, action) => state.show_grid = action.payload,
     setRadDeg: () => {
 
     },
@@ -38,6 +38,3 @@ export const indexSlice = createSlice({
 });
 
 export default indexSlice;
-// export const { increment, decrement, incrementByAmount } = indexSlice.actions;
-
-// export default indexSlice.reducer;
