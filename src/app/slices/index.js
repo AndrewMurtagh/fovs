@@ -15,19 +15,17 @@ export const indexSlice = createSlice({
   name: 'index',
   initialState: initial_state,
   reducers: {
-    setView: (state, action) => state.preset_view_key = action.payload,
-    addCamera: (state,action) => state.cameras.push(action.payload),
+    setView: (state, action) => { state.preset_view_key = action.payload },
+    addCamera: (state, action) => { state.cameras.push(action.payload) },
     removeCamera: () => {
 
     },
-    updateCamera: () => {
-
-    },
+    updateCamera: (state, action) => { state.cameras.find(p => p.id === action.payload.id && (p[action.payload.attr] = action.payload.value, true)) },
     setEnvironment: () => {
 
     },
-    setShowAxes: (state, action) => state.show_axes = action.payload,
-    setShowGrid: (state, action) => state.show_grid = action.payload,
+    setShowAxes: (state, action) => { state.show_axes = action.payload },
+    setShowGrid: (state, action) => { state.show_grid = action.payload },
     setRadDeg: () => {
 
     },

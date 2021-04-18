@@ -4,7 +4,15 @@ Web-based visualiser for camera's field of view
 
 I have been committing on the main branch given there is a single developer working on this.
 
-TODO
+## TODO
+
+- [ ] Add text label with camera name in scene.
+
+- [ ] Reset to camera defaults in sidebar.
+
+- [ ] Update cameras from sidebar.
+
+- [ ] Remove camera.
 
 - [ ] Preset camera views should get the centroid of the bounding box of all elements in the scene rather than 0,0,5
 
@@ -13,3 +21,17 @@ TODO
 - [ ] Dark theme.
 
 - [ ] Toggle axes and grid
+
+- [ ] Add sample environments
+
+- [ ] Styling.
+
+- [ ] Change license.
+
+- [ ] Visualise intersection of frustums.
+
+- [ ] First person view form each camera
+
+- [ ] Highlight active camera when you click on it in sidebar.
+
+- [ ] Add info dialog with link to Github and instructions.

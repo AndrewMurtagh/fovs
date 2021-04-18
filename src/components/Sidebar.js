@@ -1,87 +1,91 @@
 import { styled } from '@stitches/react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Accordion from '@radix-ui/react-accordion';
 import StyledAccordion from '../styles/accordian';
+import indexSlice from '../app/slices';
 
 const StyledSidebar = styled('div', {
-  gridArea: 'sidebar',
-  borderRight: '1px solid gainsboro'
+    gridArea: 'sidebar',
+    borderRight: '1px solid gainsboro'
 });
 
 const Sidebar = () => {
 
-  const cameras = useSelector(state => state.cameras);
+    const dispatch = useDispatch();
+    const cameras = useSelector(state => state.cameras);
 
-  return (
-    <>
-      <StyledSidebar>
-        <Accordion.Root type="multiple">
-          {
-            cameras.map(camera => (
-              <StyledAccordion.Item value={camera.id} key={camera.id}>
+    const onCameraAttrChange = (id, attr, value) => dispatch(indexSlice.actions.updateCamera({ id, attr, value }));
 
-                <StyledAccordion.Header>
-                  <StyledAccordion.Button>{camera.name}</StyledAccordion.Button>
-                </StyledAccordion.Header>
+    return (
+        <>
+            <StyledSidebar>
+                <Accordion.Root type="multiple">
+                    {
+                        cameras.map(camera => (
+                            <StyledAccordion.Item value={camera.id} key={camera.id}>
 
-                <StyledAccordion.Panel>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>name</td>
-                        <td><input type="text" value={camera.name}></input></td>
-                      </tr>
-                      <tr>
-                        <td>x</td>
-                        <td><input type="number" step="0.1" value={camera.x}></input></td>
-                      </tr>
-                      <tr>
-                        <td>y</td>
-                        <td><input type="number" step="0.1" value={camera.y}></input></td>
-                      </tr>
-                      <tr>
-                        <td>z</td>
-                        <td><input type="number" step="0.1" value={camera.z}></input></td>
-                      </tr>
-                      <tr>
-                        <td>rx</td>
-                        <td><input type="number" step="0.1" value={camera.rx}></input></td>
-                      </tr>
-                      <tr>
-                        <td>ry</td>
-                        <td><input type="number" step="0.1" value={camera.ry}></input></td>
-                      </tr>
-                      <tr>
-                        <td>rz</td>
-                        <td><input type="number" step="0.1" value={camera.rz}></input></td>
-                      </tr>
-                      <tr>
-                        <td>near</td>
-                        <td><input type="number" step="0.1" value={camera.near}></input></td>
-                      </tr>
-                      <tr>
-                        <td>far</td>
-                        <td><input type="number" step="0.1" value={camera.far}></input></td>
-                      </tr>
-                      <tr>
-                        <td>hfov</td>
-                        <td><input type="number" step="0.1" value={camera.hfov}></input></td>
-                      </tr>
-                      <tr>
-                        <td>vfov</td>
-                        <td><input type="number" step="0.1" value={camera.vfov}></input></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </StyledAccordion.Panel>
-              </StyledAccordion.Item>
-            ))
-          }
+                                <StyledAccordion.Header>
+                                    <StyledAccordion.Button>{camera.name}</StyledAccordion.Button>
+                                </StyledAccordion.Header>
 
-        </Accordion.Root>
-      </StyledSidebar>
-    </>
-  )
+                                <StyledAccordion.Panel>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>name</td>
+                                                <td><input type="text" value={camera.name} onChange={e => onCameraAttrChange(camera.id, 'name', e.target.value)}></input></td>
+                                            </tr>
+                                            <tr>
+                                                <td>x</td>
+                                                <td><input type="number" step="0.5" value={camera.x} onChange={e => onCameraAttrChange(camera.id, 'x', e.target.value)}></input></td>
+                                            </tr>
+                                            <tr>
+                                                <td>y</td>
+                                                <td><input type="number" step="0.5" value={camera.y} onChange={e => onCameraAttrChange(camera.id, 'y', e.target.value)}></input></td>
+                                            </tr>
+                                            <tr>
+                                                <td>z</td>
+                                                <td><input type="number" step="0.5" value={camera.z} onChange={e => onCameraAttrChange(camera.id, 'z', e.target.value)}></input></td>
+                                            </tr>
+                                            <tr>
+                                                <td>rx</td>
+                                                <td><input type="number" step="10" value={camera.rx} onChange={e => onCameraAttrChange(camera.id, 'rx', e.target.value)}></input></td>
+                                            </tr>
+                                            <tr>
+                                                <td>ry</td>
+                                                <td><input type="number" step="10" value={camera.ry} onChange={e => onCameraAttrChange(camera.id, 'ry', e.target.value)}></input></td>
+                                            </tr>
+                                            <tr>
+                                                <td>rz</td>
+                                                <td><input type="number" step="10" value={camera.rz} onChange={e => onCameraAttrChange(camera.id, 'rz', e.target.value)}></input></td>
+                                            </tr>
+                                            <tr>
+                                                <td>near</td>
+                                                <td><input type="number" step="0.5" value={camera.near} onChange={e => onCameraAttrChange(camera.id, 'near', e.target.value)}></input></td>
+                                            </tr>
+                                            <tr>
+                                                <td>far</td>
+                                                <td><input type="number" step="0.5" value={camera.far} onChange={e => onCameraAttrChange(camera.id, 'far', e.target.value)}></input></td>
+                                            </tr>
+                                            <tr>
+                                                <td>hfov</td>
+                                                <td><input type="number" step="10" value={camera.hfov} onChange={e => onCameraAttrChange(camera.id, 'hfov', e.target.value)}></input></td>
+                                            </tr>
+                                            <tr>
+                                                <td>vfov</td>
+                                                <td><input type="number" step="10" value={camera.vfov} onChange={e => onCameraAttrChange(camera.id, 'vfov', e.target.value)}></input></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </StyledAccordion.Panel>
+                            </StyledAccordion.Item>
+                        ))
+                    }
+
+                </Accordion.Root>
+            </StyledSidebar>
+        </>
+    )
 
 }
 

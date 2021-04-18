@@ -3,7 +3,7 @@ import { CameraHelper } from 'three'
 import { PerspectiveCamera, useHelper } from '@react-three/drei'
 import { degToRad } from '../core/utils';
 
-const CameraVisualiser = ({camera}) => {
+const CameraVisualiser = ({ camera }) => {
 
     const camera_ref = useRef();
 
@@ -14,7 +14,7 @@ const CameraVisualiser = ({camera}) => {
             <PerspectiveCamera
                 makeDefault={false}
                 ref={camera_ref}
-                
+
                 position={[camera.x, camera.y, camera.z]}
                 fov={camera.vfov}
                 aspect={(Math.tan(camera.hfov / 2)) / (Math.tan(camera.vfov / 2))}
