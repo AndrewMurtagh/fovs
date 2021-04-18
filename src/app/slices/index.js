@@ -14,10 +14,10 @@ export const indexSlice = createSlice({
   initialState: initial_state,
   reducers: {
     setView: (state, action) => {
-      state.preset_view_key = action.payload
+      state.preset_view_key = action.payload;
     },
-    addCamera: () => {
-
+    addCamera: (state,action) => {
+      state.cameras.push(action.payload);
     },
     removeCamera: () => {
 

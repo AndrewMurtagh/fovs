@@ -1,4 +1,5 @@
 import { styled } from '@stitches/react';
+import { useSelector } from 'react-redux';
 import * as Accordion from '@radix-ui/react-accordion';
 import StyledAccordion from '../styles/accordian';
 
@@ -7,59 +8,16 @@ const StyledSidebar = styled('div', {
   borderRight: '1px solid gainsboro'
 });
 
-
-const temp_cameras = [
-  {
-    id: 1,
-    name: "Camera 1",
-    x: 1,
-    y: 1,
-    z: 1,
-    rx: 1,
-    ry: 1,
-    rz: 1,
-    near: 1,
-    far: 1,
-    hfov: 1,
-    vfov: 1
-  },
-  {
-    id: 2,
-    name: "Camera 2",
-    x: 1,
-    y: 1,
-    z: 1,
-    rx: 1,
-    ry: 1,
-    rz: 1,
-    near: 1,
-    far: 1,
-    hfov: 1,
-    vfov: 1
-  },
-  {
-    id: 3,
-    name: "Camera 3",
-    x: 1,
-    y: 1,
-    z: 1,
-    rx: 1,
-    ry: 1,
-    rz: 1,
-    near: 1,
-    far: 1,
-    hfov: 1,
-    vfov: 1
-  }
-]
 const Sidebar = () => {
+
+  const cameras = useSelector(state => state.cameras);
 
   return (
     <>
       <StyledSidebar>
         <Accordion.Root type="multiple">
           {
-            temp_cameras.map(camera => (
+            cameras.map(camera => (
               <StyledAccordion.Item value={camera.id} key={camera.id}>
 
                 <StyledAccordion.Header>

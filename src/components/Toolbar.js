@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { styled } from '@stitches/react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
@@ -27,10 +28,36 @@ const Toolbar = () => {
 
     const dispatch = useDispatch();
     const preset_view_key = useSelector(state => state.preset_view_key);
+    const cameras = useSelector(state => state.cameras);
 
     // camera view has changed and the view is defined, 
     // view can be not defined if you unselect it
-    const onViewChange = view => view && dispatch(indexSlice.actions.setView(view))
+    const onViewChange = view => view && dispatch(indexSlice.actions.setView(view));
+
+    // a camera has been added to the scene
+    const onCameraAdded = preset_camera => {
+
+        const num_cameras = cameras.length;
+
+        const camera = {
+            id: num_cameras+1,
+            name: `Camera ${num_cameras+1}`,
+            x: 0,
+            y: 1,
+            z: 0,
+            rx: 0,
+            ry: 0,
+            rz: 0,
+            near: preset_camera.near,
+            far: preset_camera.far,
+            hfov: preset_camera.hfov,
+            vfov: preset_camera.vfov
+        };
+
+        dispatch(indexSlice.actions.addCamera(camera));
+
+    }
+   
 
     return (
         <>
@@ -46,7 +73,9 @@ const Toolbar = () => {
                         <DropdownMenu.Trigger>Add Camera</DropdownMenu.Trigger>
                         <StyledDropdown.Content>
                             {
-                                Object.values(PresetCameras).map(camera => <StyledDropdown.Item key={camera.key}>{camera.name}</StyledDropdown.Item>)
+                                Object.values(PresetCameras).map(camera =>
+                                    <StyledDropdown.Item key={camera.key} onSelect={() => onCameraAdded(camera)}>{camera.name}</StyledDropdown.Item>
+                                )
                             }
                             <StyledDropdown.Arrow />
                         </StyledDropdown.Content>
