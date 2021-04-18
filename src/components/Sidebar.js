@@ -60,7 +60,7 @@ const Sidebar = () => {
         <Accordion.Root type="multiple">
           {
             temp_cameras.map(camera => (
-              <StyledAccordion.Item value={camera.id}>
+              <StyledAccordion.Item value={camera.id} key={camera.id}>
 
                 <StyledAccordion.Header>
                   <StyledAccordion.Button>{camera.name}</StyledAccordion.Button>

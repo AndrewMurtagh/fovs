@@ -15,7 +15,7 @@ const CameraVisualiser = () => {
     const NEAR = 1;
     const FAR = 6;
     const POSITION = [3, 3, 3];
-    const ROTATION_DEG = [45, 0, 0]
+    const ROTATION_DEG = [0, 0, 0]
     const ROTATION = [degToRad(ROTATION_DEG[0]), degToRad(ROTATION_DEG[1]), degToRad(ROTATION_DEG[2])];
 
     return (
