@@ -11,3 +11,5 @@ TODO
 - [ ] Preset views but with top and bottom views.
 
 - [ ] Dark theme.
+
+- [ ] Toggle axes and grid

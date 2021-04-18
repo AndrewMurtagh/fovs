@@ -3,20 +3,11 @@ import { CameraHelper } from 'three'
 import { PerspectiveCamera, useHelper } from '@react-three/drei'
 import { degToRad } from '../core/utils';
 
-const CameraVisualiser = () => {
+const CameraVisualiser = ({camera}) => {
 
     const camera_ref = useRef();
 
     useHelper(camera_ref, CameraHelper, 1, 'hotpink');
-
-    const VFOV = 45;
-    const HFOV = 45;
-    const ASPECT = (Math.tan(HFOV / 2)) / (Math.tan(VFOV / 2))
-    const NEAR = 1;
-    const FAR = 6;
-    const POSITION = [3, 3, 3];
-    const ROTATION_DEG = [0, 0, 0]
-    const ROTATION = [degToRad(ROTATION_DEG[0]), degToRad(ROTATION_DEG[1]), degToRad(ROTATION_DEG[2])];
 
     return (
         <>
@@ -24,12 +15,12 @@ const CameraVisualiser = () => {
                 makeDefault={false}
                 ref={camera_ref}
                 
-                position={POSITION}
-                fov={VFOV}
-                aspect={ASPECT}
-                near={NEAR}
-                far={FAR}
-                rotation={ROTATION}
+                position={[camera.x, camera.y, camera.z]}
+                fov={camera.vfov}
+                aspect={(Math.tan(camera.hfov / 2)) / (Math.tan(camera.vfov / 2))}
+                near={camera.near}
+                far={camera.far}
+                rotation={[degToRad(camera.rx), degToRad(camera.ry), degToRad(camera.rz)]}
             >
                 <meshBasicMaterial attach="material" />
             </PerspectiveCamera>

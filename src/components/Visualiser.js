@@ -18,13 +18,14 @@ const Visualiser = () => {
     const viewer_camera = useRef();
 
     const preset_view_key = useSelector(state => state.preset_view_key);
+    const cameras = useSelector(state => state.cameras);
 
     // the viewer's camera position
     let viewer_pos;
     if (preset_view_key !== PresetViews.None.key)
         viewer_pos = PresetViews[preset_view_key].pos
 
-        
+
     // add an event listener to the orbit control to unset (i.e. set to None)
     // when a user starts to control the camera and potentially move away from
     // preset views
@@ -46,8 +47,9 @@ const Visualiser = () => {
                     <gridHelper args={[consts.GRID_SIZE, consts.GRID_DIVISIONS]} />
                     <Axes />
                     <Box />
-
-                    <CameraVisualiser />
+                    {
+                        cameras.map(camera => <CameraVisualiser key={camera.id} camera={camera} />)
+                    }
                 </Canvas>
 
             </StyledVisualiser>
