@@ -10,10 +10,9 @@ I have been committing on the main branch given there is a single developer work
 
 - [x] Remove camera.
 
-- [ ] Add text label with camera name in scene.
+- [x] Add text label with camera name in scene.
 
 - [ ] Reset to camera defaults in sidebar.
-
 
 - [ ] Preset camera views should get the centroid of the bounding box of all elements in the scene rather than 0,0,5
 

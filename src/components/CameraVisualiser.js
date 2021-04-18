@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { CameraHelper } from 'three'
-import { PerspectiveCamera, useHelper } from '@react-three/drei'
+import { PerspectiveCamera, useHelper, Html } from '@react-three/drei'
 import { degToRad } from '../core/utils';
+import consts from '../core/consts';
 
 const CameraVisualiser = ({ camera }) => {
 
@@ -24,6 +25,11 @@ const CameraVisualiser = ({ camera }) => {
             >
                 <meshBasicMaterial attach="material" />
             </PerspectiveCamera>
+
+            <Html center position={[camera.x, camera.y+consts.CAMERA_LABEL_OFFSET, camera.z]}>
+                <p style={{ color: consts.CAMERA_LABEL_COLOUR, minWidth: '100px', textAlign: 'center' }}>{camera.name}</p>
+            </Html>
+
         </>
     );
 };
