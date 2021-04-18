@@ -16,6 +16,8 @@ const Sidebar = () => {
 
     const onCameraAttrChange = (id, attr, value) => dispatch(indexSlice.actions.updateCamera({ id, attr, value }));
 
+    const onRemoveCamera = camera_id => dispatch(indexSlice.actions.removeCamera(camera_id));
+    
     return (
         <>
             <StyledSidebar>
@@ -29,6 +31,11 @@ const Sidebar = () => {
                                 </StyledAccordion.Header>
 
                                 <StyledAccordion.Panel>
+                                    <div>
+                                        <button>Reset</button>
+                                        <button>FPV</button>
+                                        <button onClick={() => onRemoveCamera(camera.id)}>Remove</button>
+                                    </div>
                                     <table>
                                         <tbody>
                                             <tr>

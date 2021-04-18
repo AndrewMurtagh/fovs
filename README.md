@@ -6,13 +6,14 @@ I have been committing on the main branch given there is a single developer work
 
 ## TODO
 
+- [x] Update cameras from sidebar.
+
+- [x] Remove camera.
+
 - [ ] Add text label with camera name in scene.
 
 - [ ] Reset to camera defaults in sidebar.
 
-- [ ] Update cameras from sidebar.
-
-- [ ] Remove camera.
 
 - [ ] Preset camera views should get the centroid of the bounding box of all elements in the scene rather than 0,0,5
 
@@ -35,3 +36,5 @@ I have been committing on the main branch given there is a single developer work
 - [ ] Highlight active camera when you click on it in sidebar.
 
 - [ ] Add info dialog with link to Github and instructions.
+
+- [ ] Bounds checking.
