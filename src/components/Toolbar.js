@@ -6,6 +6,7 @@ import StyledDropdown from '../styles/dropdown';
 import StyledToggle from '../styles/toggle';
 import StyledSwitch from '../styles/switch';
 import { PresetCameras, PresetViews } from '../core/consts';
+import { AiFillVideoCamera } from 'react-icons/ai';
 import indexSlice from '../app/slices';
 
 const StyledToolbar = styled('div', {
@@ -15,11 +16,31 @@ const StyledToolbar = styled('div', {
 });
 
 const StyledToolbarSecion = styled('div', {
-    height: '100%',
-    paddingLeft: '16px',
-    paddingRight: '16px',
     borderRight: '1px solid gainsboro',
-    display: 'flex'
+    display: 'grid',
+    gridTemplateRows: '20% 80%',
+    h3: {
+        padding: '4px 12px',
+        textTransform: 'uppercase',
+        fontSize: '10px',
+        color: '#546e7a',
+        fontWeight: '700',
+    },
+    '& .customClass': {
+        display: 'flex',
+        justifyContent: 'center',
+        alignCenter: 'center',
+        height: '100%',
+        flexDirection: 'row',
+    }
+});
+
+const StyledTrigger = styled(DropdownMenu.Trigger, {
+    border: 'none',
+    color: '#00bfa5',
+    // padding: '8px',
+    outline: 'none',
+    cursor: 'pointer'
 });
 
 
@@ -70,67 +91,78 @@ const Toolbar = () => {
     return (
         <>
             <StyledToolbar>
-
+                <img alt="Camera icon" src="/camera.png" height="80%" width="auto" />
+           
 
                 <StyledToolbarSecion>
-                    <img alt="Camera icon" src="/camera.png" height="100%" />
+                    <h3>Add camera</h3>
+                    <div className="customClass">
+                        <DropdownMenu.Root>
+                            <StyledTrigger>
+                                <AiFillVideoCamera />
+                            </StyledTrigger>
+                            <StyledDropdown.Content>
+                                {
+                                    Object.values(PresetCameras).map(camera =>
+                                        <StyledDropdown.Item key={camera.key} onSelect={() => onCameraAdded(camera)}>{camera.name}</StyledDropdown.Item>
+                                    )
+                                }
+                                <StyledDropdown.Arrow />
+                            </StyledDropdown.Content>
+                        </DropdownMenu.Root>
+                    </div>
                 </StyledToolbarSecion>
 
                 <StyledToolbarSecion>
-                    <DropdownMenu.Root>
-                        <DropdownMenu.Trigger>Add Camera</DropdownMenu.Trigger>
-                        <StyledDropdown.Content>
-                            {
-                                Object.values(PresetCameras).map(camera =>
-                                    <StyledDropdown.Item key={camera.key} onSelect={() => onCameraAdded(camera)}>{camera.name}</StyledDropdown.Item>
-                                )
-                            }
-                            <StyledDropdown.Arrow />
-                        </StyledDropdown.Content>
-                    </DropdownMenu.Root>
+                    <h3>View</h3>
+                    <div className="customClass">
+                        <ToggleGroup.Root type="single" value={preset_view_key} onValueChange={onViewChange}>
+                            <StyledToggle.Item value={PresetViews.Iso.key}>Isometric</StyledToggle.Item>
+                            <StyledToggle.Item value={PresetViews.Left.key}>Left</StyledToggle.Item>
+                            <StyledToggle.Item value={PresetViews.Right.key}>Right</StyledToggle.Item>
+                            <StyledToggle.Item value={PresetViews.Front.key}>Front</StyledToggle.Item>
+                            <StyledToggle.Item value={PresetViews.Back.key}>Back</StyledToggle.Item>
+                            <StyledToggle.Item value={PresetViews.Top.key}>Top</StyledToggle.Item>
+                            <StyledToggle.Item value={PresetViews.Bottom.key}>Bottom</StyledToggle.Item>
+                        </ToggleGroup.Root>
+                    </div>
                 </StyledToolbarSecion>
 
                 <StyledToolbarSecion>
-                    <ToggleGroup.Root type="single" value={preset_view_key} onValueChange={onViewChange}>
-                        <StyledToggle.Item value={PresetViews.Iso.key}>Isometric</StyledToggle.Item>
-                        <StyledToggle.Item value={PresetViews.Left.key}>Left</StyledToggle.Item>
-                        <StyledToggle.Item value={PresetViews.Right.key}>Right</StyledToggle.Item>
-                        <StyledToggle.Item value={PresetViews.Front.key}>Front</StyledToggle.Item>
-                        <StyledToggle.Item value={PresetViews.Back.key}>Back</StyledToggle.Item>
-                        <StyledToggle.Item value={PresetViews.Top.key}>Top</StyledToggle.Item>
-                        <StyledToggle.Item value={PresetViews.Bottom.key}>Bottom</StyledToggle.Item>
-                    </ToggleGroup.Root>
+                    <h3>Env</h3>
+                    <div className="customClass">
+                        <ToggleGroup.Root type="single">
+                            <StyledToggle.Item value="none">None</StyledToggle.Item>
+                            <StyledToggle.Item value="apartment">Apartment</StyledToggle.Item>
+                            <StyledToggle.Item value="right">Factory</StyledToggle.Item>
+                        </ToggleGroup.Root>
+                    </div>
                 </StyledToolbarSecion>
 
                 <StyledToolbarSecion>
-                    <ToggleGroup.Root type="single">
-                        <StyledToggle.Item value="none">None</StyledToggle.Item>
-                        <StyledToggle.Item value="apartment">Apartment</StyledToggle.Item>
-                        <StyledToggle.Item value="right">Factory</StyledToggle.Item>
-                    </ToggleGroup.Root>
-                </StyledToolbarSecion>
+                    <h3>Options</h3>
+                    <div className="customClass">
+                        <ToggleGroup.Root type="single">
+                            <StyledToggle.Item value="none">Rad</StyledToggle.Item>
+                            <StyledToggle.Item value="apartment">Deg</StyledToggle.Item>
+                        </ToggleGroup.Root>
+                        <ToggleGroup.Root type="single">
+                            <StyledToggle.Item value="none">Euler</StyledToggle.Item>
+                            <StyledToggle.Item value="apartment">Quaternion</StyledToggle.Item>
+                        </ToggleGroup.Root>
 
-                <StyledToolbarSecion>
-                    <ToggleGroup.Root type="single">
-                        <StyledToggle.Item value="none">Rad</StyledToggle.Item>
-                        <StyledToggle.Item value="apartment">Deg</StyledToggle.Item>
-                    </ToggleGroup.Root>
-                    <ToggleGroup.Root type="single">
-                        <StyledToggle.Item value="none">Euler</StyledToggle.Item>
-                        <StyledToggle.Item value="apartment">Quaternion</StyledToggle.Item>
-                    </ToggleGroup.Root>
-                    
-                    <label>axes</label>
-                    <StyledSwitch.Switch checked={show_axes} onCheckedChange={onShowAxesChange}>
-                        <StyledSwitch.Thumb />
-                    </StyledSwitch.Switch>
+                        <label>axes</label>
+                        <StyledSwitch.Switch checked={show_axes} onCheckedChange={onShowAxesChange}>
+                            <StyledSwitch.Thumb />
+                        </StyledSwitch.Switch>
 
-                    <label>grid</label>
-                    <StyledSwitch.Switch checked={show_grid} onCheckedChange={onShowGridChange}>
-                        <StyledSwitch.Thumb />
-                    </StyledSwitch.Switch>
+                        <label>grid</label>
+                        <StyledSwitch.Switch checked={show_grid} onCheckedChange={onShowGridChange}>
+                            <StyledSwitch.Thumb />
+                        </StyledSwitch.Switch>
 
-                    <button>Info</button>
+                        <button>Info</button>
+                    </div>
                 </StyledToolbarSecion>
 
             </StyledToolbar>

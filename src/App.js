@@ -4,7 +4,13 @@ import Toolbar from './components/Toolbar';
 import Visualiser from './components/Visualiser';
 
 const globalStyles = global({
-  '*': { margin: 0, padding: 0 },
+  '*': { 
+    margin: 0, 
+    padding: 0 
+  },
+  h3: {
+    fontFamily: ['Roboto', 'sans-serif']
+  }
 });
 
 
@@ -13,7 +19,7 @@ const StyledGrid = styled('div', {
   height: '100vh',
   width: '100vw',
   gridTemplateColumns: '15% 85%',
-  gridTemplateRows: '10% 90%',
+  gridTemplateRows: '7% 93%',
   gridTemplateAreas: `
     'toolbar toolbar'
     'sidebar visualiser'
