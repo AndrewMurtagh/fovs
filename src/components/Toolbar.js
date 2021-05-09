@@ -1,6 +1,7 @@
 import { styled } from '@stitches/react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
+import * as Dialog from '@radix-ui/react-dialog';
 import { useDispatch, useSelector } from 'react-redux';
 import StyledDropdown from '../styles/dropdown';
 import StyledToggle from '../styles/toggle';
@@ -43,6 +44,35 @@ const StyledTrigger = styled(DropdownMenu.Trigger, {
     cursor: 'pointer'
 });
 
+/**
+ * Info dialog
+ */
+const StyledOverlay = styled(Dialog.Overlay, {
+    backgroundColor: 'rgba(0, 0, 0, .15)',
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+});
+
+const StyledContent = styled(Dialog.Content, {
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    minWidth: 200,
+    maxWidth: 'fit-content',
+    maxHeight: '85vh',
+    padding: 20,
+    marginTop: '-5vh',
+    backgroundColor: 'white',
+    borderRadius: 6,
+
+    '&:focus': {
+        outline: 'none',
+    },
+});
 
 
 
@@ -92,7 +122,7 @@ const Toolbar = () => {
         <>
             <StyledToolbar>
                 <img alt="Camera icon" src="/camera.png" height="80%" width="auto" />
-           
+
 
                 <StyledToolbarSecion>
                     <h3>Add camera</h3>
@@ -161,7 +191,15 @@ const Toolbar = () => {
                             <StyledSwitch.Thumb />
                         </StyledSwitch.Switch>
 
-                        <button>Info</button>
+                        <Dialog.Root>
+                            <Dialog.Trigger>Open</Dialog.Trigger>
+                            <StyledOverlay />
+                            <StyledContent>
+                                <h1>Info</h1>
+                                <p>FOVs is a tool to visualise the fields of views of multiple cameras in a scene.</p>
+                                <Dialog.Close>Close</Dialog.Close>
+                            </StyledContent>
+                        </Dialog.Root>
                     </div>
                 </StyledToolbarSecion>
 
