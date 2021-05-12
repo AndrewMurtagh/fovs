@@ -1,7 +1,8 @@
 import { styled } from '@stitches/react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Accordion from '@radix-ui/react-accordion';
-import StyledAccordion from '../styles/accordian';
+import { AiFillDelete } from 'react-icons/ai';
+import StyledAccordion from '../styles/accordion';
 import indexSlice from '../app/slices';
 
 const StyledSidebar = styled('div', {
@@ -17,7 +18,7 @@ const Sidebar = () => {
     const onCameraAttrChange = (id, attr, value) => dispatch(indexSlice.actions.updateCamera({ id, attr, value }));
 
     const onRemoveCamera = camera_id => dispatch(indexSlice.actions.removeCamera(camera_id));
-    
+
     return (
         <>
             <StyledSidebar>
@@ -27,59 +28,62 @@ const Sidebar = () => {
                             <StyledAccordion.Item value={camera.id} key={camera.id}>
 
                                 <StyledAccordion.Header>
-                                    <StyledAccordion.Button>{camera.name}</StyledAccordion.Button>
+                                    <StyledAccordion.Button>
+                                        <span>{camera.name}</span>
+                                        <span className="delete" onClick={() => onRemoveCamera(camera.id)}><AiFillDelete/></span>
+                                    </StyledAccordion.Button>
                                 </StyledAccordion.Header>
 
                                 <StyledAccordion.Panel>
-                                    <div>
+                                    {/* <div>
                                         <button>Reset</button>
                                         <button>FPV</button>
                                         <button onClick={() => onRemoveCamera(camera.id)}>Remove</button>
-                                    </div>
+                                    </div> */}
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <td>name</td>
+                                                <td className="key">name</td>
                                                 <td><input type="text" value={camera.name} onChange={e => onCameraAttrChange(camera.id, 'name', e.target.value)}></input></td>
                                             </tr>
                                             <tr>
-                                                <td>x</td>
+                                                <td className="key">x</td>
                                                 <td><input type="number" step="0.5" value={camera.x} onChange={e => onCameraAttrChange(camera.id, 'x', parseFloat(e.target.value))}></input></td>
                                             </tr>
                                             <tr>
-                                                <td>y</td>
+                                                <td className="key">y</td>
                                                 <td><input type="number" step="0.5" value={camera.y} onChange={e => onCameraAttrChange(camera.id, 'y', parseFloat(e.target.value))}></input></td>
                                             </tr>
                                             <tr>
-                                                <td>z</td>
+                                                <td className="key">z</td>
                                                 <td><input type="number" step="0.5" value={camera.z} onChange={e => onCameraAttrChange(camera.id, 'z', parseFloat(e.target.value))}></input></td>
                                             </tr>
                                             <tr>
-                                                <td>rx</td>
+                                                <td className="key">rx</td>
                                                 <td><input type="number" step="10" value={camera.rx} onChange={e => onCameraAttrChange(camera.id, 'rx', parseFloat(e.target.value))}></input></td>
                                             </tr>
                                             <tr>
-                                                <td>ry</td>
+                                                <td className="key">ry</td>
                                                 <td><input type="number" step="10" value={camera.ry} onChange={e => onCameraAttrChange(camera.id, 'ry', parseFloat(e.target.value))}></input></td>
                                             </tr>
                                             <tr>
-                                                <td>rz</td>
+                                                <td className="key">rz</td>
                                                 <td><input type="number" step="10" value={camera.rz} onChange={e => onCameraAttrChange(camera.id, 'rz', parseFloat(e.target.value))}></input></td>
                                             </tr>
                                             <tr>
-                                                <td>near</td>
+                                                <td className="key">near</td>
                                                 <td><input type="number" step="0.5" value={camera.near} onChange={e => onCameraAttrChange(camera.id, 'near', parseFloat(e.target.value))}></input></td>
                                             </tr>
                                             <tr>
-                                                <td>far</td>
+                                                <td className="key">far</td>
                                                 <td><input type="number" step="0.5" value={camera.far} onChange={e => onCameraAttrChange(camera.id, 'far', parseFloat(e.target.value))}></input></td>
                                             </tr>
                                             <tr>
-                                                <td>hfov</td>
+                                                <td className="key">hfov</td>
                                                 <td><input type="number" step="10" value={camera.hfov} onChange={e => onCameraAttrChange(camera.id, 'hfov', e.target.value)}></input></td>
                                             </tr>
                                             <tr>
-                                                <td>vfov</td>
+                                                <td className="key">vfov</td>
                                                 <td><input type="number" step="10" value={camera.vfov} onChange={e => onCameraAttrChange(camera.id, 'vfov', e.target.value)}></input></td>
                                             </tr>
                                         </tbody>

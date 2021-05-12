@@ -1,18 +1,18 @@
 import { styled } from '@stitches/react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
+import { AiFillVideoCamera, AiOutlineInfoCircle } from 'react-icons/ai';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useDispatch, useSelector } from 'react-redux';
 import StyledDropdown from '../styles/dropdown';
 import StyledToggle from '../styles/toggle';
 import StyledSwitch from '../styles/switch';
 import { PresetCameras, PresetViews } from '../core/consts';
-import { AiFillVideoCamera, AiOutlineInfoCircle } from 'react-icons/ai';
 import indexSlice from '../app/slices';
 
 const StyledToolbar = styled('div', {
     gridArea: 'toolbar',
-    borderBottom: '1px solid gainsboro',
+    borderBottom: '2px solid gainsboro',
     display: 'flex'
 });
 
@@ -47,7 +47,6 @@ const StyledToolbarSecion = styled('div', {
         padding: '0 12px'
     },
     '& label': {
-        color: '#9CA3AF',
         fontSize: '12px',
         padding: 0,
         paddingRight: '4px'
@@ -58,12 +57,15 @@ const StyledTrigger = styled(DropdownMenu.Trigger, {
     background: 'white',
     border: '1px solid gainsboro',
     borderRadius: '2px',
-    color: '#10B981',
+    // color: '#10B981',
+    color: '#9CA3AF',
     padding: '2px 6px',
+    fontSize: 18,
     paddingTop: '4px',
     outline: 'none',
     cursor: 'pointer',
     '&:hover': {
+        color: '#10B981',
         border: '1px solid #10B981',
         background: 'rgb(16,185,129, 0.15)',
     }
@@ -77,12 +79,15 @@ const StyledDialogTrigger = styled(Dialog.Trigger, {
     background: 'white',
     border: '1px solid gainsboro',
     borderRadius: '2px',
-    color: '#10B981',
+    // color: '#10B981',
+    color: '#9CA3AF',
     padding: '2px 6px',
+    fontSize: 18,
     paddingTop: '4px',
     outline: 'none',
     cursor: 'pointer',
     '&:hover': {
+        color: '#10B981',
         border: '1px solid #10B981',
         background: 'rgb(16,185,129, 0.15)',
     }

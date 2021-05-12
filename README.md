@@ -14,6 +14,8 @@ I have been committing on the main branch given there is a single developer work
 
 - [x] Toggle axes and grid.
 
+- [ ] Control selected camera using keyboard shortcuts.
+
 - [ ] Set rotation in preset views.
 
 - [ ] Reset to camera defaults in sidebar.
