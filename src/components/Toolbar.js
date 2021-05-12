@@ -21,6 +21,15 @@ const StyledToolbarSecion = styled('div', {
     display: 'flex',
     flexDirection: 'column',
 
+    h1: {
+        display: 'flex',
+        alignItems: 'center',
+        height: '100%',
+        padding: '0px 12px',
+        color: '#10B981',
+        fontWeight: 700,
+    },
+
     h3: {
         padding: '6px 12px',
         textTransform: 'uppercase',
@@ -153,7 +162,9 @@ const Toolbar = () => {
     return (
         <>
             <StyledToolbar>
-                <img alt="Camera icon" src="/camera.png" height="80%" width="auto" />
+                <StyledToolbarSecion>
+                    <h1>FOVs</h1>
+                </StyledToolbarSecion>
 
 
                 <StyledToolbarSecion>
