@@ -4,23 +4,24 @@ import Toolbar from './components/Toolbar';
 import Visualiser from './components/Visualiser';
 
 const globalStyles = global({
-  '*': { 
-    margin: 0, 
-    padding: 0 
-  },
-  h3: {
-    fontFamily: ['Roboto', 'sans-serif']
-  }
+    '*': {
+        margin: 0,
+        padding: 0,
+        fontFamily: 'Roboto'
+    },
+    h3: {
+        fontFamily: ['Roboto', 'sans-serif']
+    }
 });
 
 
 const StyledGrid = styled('div', {
-  display: 'grid',
-  height: '100vh',
-  width: '100vw',
-  gridTemplateColumns: '15% 85%',
-  gridTemplateRows: '7% 93%',
-  gridTemplateAreas: `
+    display: 'grid',
+    height: '100vh',
+    width: '100vw',
+    gridTemplateColumns: '15% 85%',
+    gridTemplateRows: '8% 92%',
+    gridTemplateAreas: `
     'toolbar toolbar'
     'sidebar visualiser'
   `
@@ -29,22 +30,22 @@ const StyledGrid = styled('div', {
 
 const App = () => {
 
-  globalStyles();
+    globalStyles();
 
-  return (
-    <>
+    return (
+        <>
 
-      <StyledGrid>
-        <Toolbar />
+            <StyledGrid>
+                <Toolbar />
 
-        <Sidebar />
+                <Sidebar />
 
-        <Visualiser />
+                <Visualiser />
 
-      </StyledGrid>
+            </StyledGrid>
 
-    </>
-  )
+        </>
+    )
 
 }
 

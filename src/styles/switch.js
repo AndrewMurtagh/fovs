@@ -7,16 +7,17 @@ const switch_styles = {
         border: 'none',
         padding: 0,
         width: 25,
+        cursor: 'pointer',
         height: 15,
         backgroundColor: 'gainsboro',
         borderRadius: 25,
         position: 'relative',
         ':focus': {
             outline: 'none',
-            boxShadow: '0 0 0 2px royalblue',
+            boxShadow: '0 0 0 2px #10B981',
         },
         '&[data-state="checked"]': {
-            backgroundColor: 'dodgerblue',
+            backgroundColor: '#10B981',
         },
     }),
     Thumb: styled(Switch.Thumb, {

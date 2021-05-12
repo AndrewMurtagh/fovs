@@ -16,14 +16,18 @@ const dropdown_styles = {
         border: '1px solid gainsboro'
     }),
     Item: styled(DropdownMenu.Item, {
-        fontSize: 13,
+        fontSize: '12px',
         padding: '5px 10px',
         borderRadius: 3,
-        cursor: 'default',
+        color: '#4B5563',
+        border: '1px solid white',
+        cursor: 'pointer',
         '&:focus': {
             outline: 'none',
-            backgroundColor: 'dodgerblue',
-            color: 'white',
+            backgroundColor: 'rgb(16,185,129, 0.15)',
+            color: '#10B981',
+            border: '1px solid #10B981',
+            background: 'rgb(16,185,129, 0.15)',
         },
     }),
     Arrow: styled(DropdownMenu.Arrow, {

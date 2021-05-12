@@ -1,21 +1,32 @@
 import { styled } from '@stitches/react';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 
+
 const toggle_styles = {
     Item: styled(ToggleGroup.Item, {
-        appearance: 'none',
-        backgroundColor: 'transparent',
-        border: 'none',
-        margin: '0 1px',
-        boxShadow: 'inset 0 0 0 1px gainsboro',
-        overflow: 'hidden',
-        borderRadius: 3,
+        background: 'white',
+        border: '1px solid gainsboro',
+        borderRadius: '2px',
+        // color: '#10B981',
+    color: '#4B5563',
+        padding: '2px 6px',
+        marginRight: '2px',
+        outline: 'none',
+        cursor: 'pointer',
+        '&:hover': {
+            border: '1px solid #10B981',
+            color: '#10B981',
+            background: 'rgb(16,185,129, 0.15)',
+        },
         '&:focus': {
-            outline: 'none',
-            boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
+            border: '1px solid #10B981',
+            color: '#10B981',
+            background: 'rgb(16,185,129, 0.15)',
         },
         '&[data-state=on]': {
-            backgroundColor: 'gainsboro',
+            border: '1px solid #10B981',
+            color: '#10B981',
+            background: 'rgb(16,185,129, 0.15)',
         },
     })
 }

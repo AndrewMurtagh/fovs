@@ -7,7 +7,7 @@ import StyledDropdown from '../styles/dropdown';
 import StyledToggle from '../styles/toggle';
 import StyledSwitch from '../styles/switch';
 import { PresetCameras, PresetViews } from '../core/consts';
-import { AiFillVideoCamera } from 'react-icons/ai';
+import { AiFillVideoCamera, AiOutlineInfoCircle } from 'react-icons/ai';
 import indexSlice from '../app/slices';
 
 const StyledToolbar = styled('div', {
@@ -18,35 +18,67 @@ const StyledToolbar = styled('div', {
 
 const StyledToolbarSecion = styled('div', {
     borderRight: '1px solid gainsboro',
-    display: 'grid',
-    gridTemplateRows: '20% 80%',
+    display: 'flex',
+    flexDirection: 'column',
+
     h3: {
-        padding: '4px 12px',
+        padding: '6px 12px',
         textTransform: 'uppercase',
         fontSize: '10px',
-        color: '#546e7a',
-        fontWeight: '700',
+        color: '#4B5563',
+        fontWeight: 700,
     },
-    '& .customClass': {
+    '& .toolbar-tools': {
+        flexGrow: 1,
+        height: '100%',
         display: 'flex',
         justifyContent: 'center',
-        alignCenter: 'center',
-        height: '100%',
+        alignItems: 'center',
         flexDirection: 'row',
+        padding: '0 12px'
+    },
+    '& label': {
+        color: '#9CA3AF',
+        fontSize: '12px',
+        padding: 0,
+        paddingRight: '4px'
     }
 });
 
 const StyledTrigger = styled(DropdownMenu.Trigger, {
-    border: 'none',
-    color: '#00bfa5',
-    // padding: '8px',
+    background: 'white',
+    border: '1px solid gainsboro',
+    borderRadius: '2px',
+    color: '#10B981',
+    padding: '2px 6px',
+    paddingTop: '4px',
     outline: 'none',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    '&:hover': {
+        border: '1px solid #10B981',
+        background: 'rgb(16,185,129, 0.15)',
+    }
 });
 
 /**
  * Info dialog
  */
+
+const StyledDialogTrigger = styled(Dialog.Trigger, {
+    background: 'white',
+    border: '1px solid gainsboro',
+    borderRadius: '2px',
+    color: '#10B981',
+    padding: '2px 6px',
+    paddingTop: '4px',
+    outline: 'none',
+    cursor: 'pointer',
+    '&:hover': {
+        border: '1px solid #10B981',
+        background: 'rgb(16,185,129, 0.15)',
+    }
+});
+
 const StyledOverlay = styled(Dialog.Overlay, {
     backgroundColor: 'rgba(0, 0, 0, .15)',
     position: 'fixed',
@@ -126,7 +158,7 @@ const Toolbar = () => {
 
                 <StyledToolbarSecion>
                     <h3>Add camera</h3>
-                    <div className="customClass">
+                    <div className="toolbar-tools">
                         <DropdownMenu.Root>
                             <StyledTrigger>
                                 <AiFillVideoCamera />
@@ -145,7 +177,7 @@ const Toolbar = () => {
 
                 <StyledToolbarSecion>
                     <h3>View</h3>
-                    <div className="customClass">
+                    <div className="toolbar-tools">
                         <ToggleGroup.Root type="single" value={preset_view_key} onValueChange={onViewChange}>
                             <StyledToggle.Item value={PresetViews.Iso.key}>Isometric</StyledToggle.Item>
                             <StyledToggle.Item value={PresetViews.Left.key}>Left</StyledToggle.Item>
@@ -159,8 +191,8 @@ const Toolbar = () => {
                 </StyledToolbarSecion>
 
                 <StyledToolbarSecion>
-                    <h3>Env</h3>
-                    <div className="customClass">
+                    <h3>Environment</h3>
+                    <div className="toolbar-tools">
                         <ToggleGroup.Root type="single">
                             <StyledToggle.Item value="none">None</StyledToggle.Item>
                             <StyledToggle.Item value="apartment">Apartment</StyledToggle.Item>
@@ -171,28 +203,32 @@ const Toolbar = () => {
 
                 <StyledToolbarSecion>
                     <h3>Options</h3>
-                    <div className="customClass">
-                        <ToggleGroup.Root type="single">
-                            <StyledToggle.Item value="none">Rad</StyledToggle.Item>
-                            <StyledToggle.Item value="apartment">Deg</StyledToggle.Item>
+                    <div className="toolbar-tools">
+                        <ToggleGroup.Root type="single" value="rad">
+                            <StyledToggle.Item value="rad">Rad</StyledToggle.Item>
+                            <StyledToggle.Item value="deg">Deg</StyledToggle.Item>
                         </ToggleGroup.Root>
-                        <ToggleGroup.Root type="single">
-                            <StyledToggle.Item value="none">Euler</StyledToggle.Item>
-                            <StyledToggle.Item value="apartment">Quaternion</StyledToggle.Item>
+                        <div style={{ width: '12px' }}></div>
+                        <ToggleGroup.Root type="single" value="euler">
+                            <StyledToggle.Item value="euler">Euler</StyledToggle.Item>
+                            <StyledToggle.Item value="quaternion">Quaternion</StyledToggle.Item>
                         </ToggleGroup.Root>
+                        <div style={{ width: '12px' }}></div>
 
-                        <label>axes</label>
+                        <label>Axes</label>
                         <StyledSwitch.Switch checked={show_axes} onCheckedChange={onShowAxesChange}>
                             <StyledSwitch.Thumb />
                         </StyledSwitch.Switch>
+                        <div style={{ width: '12px' }}></div>
 
-                        <label>grid</label>
+                        <label>Grid</label>
                         <StyledSwitch.Switch checked={show_grid} onCheckedChange={onShowGridChange}>
                             <StyledSwitch.Thumb />
                         </StyledSwitch.Switch>
+                        <div style={{ width: '12px' }}></div>
 
                         <Dialog.Root>
-                            <Dialog.Trigger>Open</Dialog.Trigger>
+                            <StyledDialogTrigger><AiOutlineInfoCircle /></StyledDialogTrigger>
                             <StyledOverlay />
                             <StyledContent>
                                 <h1>Info</h1>

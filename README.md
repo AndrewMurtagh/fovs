@@ -12,6 +12,10 @@ I have been committing on the main branch given there is a single developer work
 
 - [x] Add text label with camera name in scene.
 
+- [x] Toggle axes and grid.
+
+- [ ] Set rotation in preset views.
+
 - [ ] Reset to camera defaults in sidebar.
 
 - [ ] Preset camera views should get the centroid of the bounding box of all elements in the scene rather than 0,0,5
@@ -20,13 +24,9 @@ I have been committing on the main branch given there is a single developer work
 
 - [ ] Dark theme.
 
-- [ ] Toggle axes and grid
-
 - [ ] Add sample environments
 
-- [ ] Styling.
-
-- [ ] Change license.
+- [ ] Styling, use stiches config.
 
 - [ ] Visualise intersection of frustums.
 
